@@ -1,15 +1,16 @@
 with open("app.log", "r") as file:
     log_data = file.readlines()
 
-error_codes = set()
+error_codes = {}
 
 for line in log_data:
     line = line.strip()
     if line == "".strip():
         continue
     part = line.split(" ", 3)
-    for line in log_data:
-        error_codes.add(part[2].upper())
+    if True:
+        error_codes[part[2]] = error_codes.get(part[2], 0) + 1
+
         
 error_code = input(f"Enter the error code to search in log file {error_codes}: ")
 
